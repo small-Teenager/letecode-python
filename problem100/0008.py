@@ -39,7 +39,7 @@ class Solution(object):
         elif v > 2 ** 31 - 1:
             return 2 ** 31 - 1
         else:
-            return num * sign
+            return v
 
 
 my_atoi = Solution().myAtoi('00012332423gg42')
