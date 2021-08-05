@@ -11,40 +11,25 @@
 
 
 class Solution(object):
+
     def removeDuplicates(self, nums):
         """
         :type nums: List[int]
         :rtype: int
         """
-        if len(nums) == 0:
-            return 1
-        i, j = 0, 1
-        while j < len(nums):
-            if nums[i] != nums[j]:
-                i += 1
-                nums[i] = nums[j]
-            else:
-                j += 1
-        return i + 1
+        left = 0
+        for right in range(len(nums)):
+            # 如果相等, 说明right指向的元素是重复元素，不保留
+            if nums[right] == nums[left]:
+                continue
 
-    def removeDuplicates2(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        if not nums:
-            return 0
-        n = len(nums)
-        fast = slow = 1
-        while fast < n:
-            if nums[fast] != nums[fast - 1]:
-                nums[slow] = nums[fast]
-                slow += 1
-            fast += 1
-        return slow
+            # 如果不相等, 说明right指向的元素不是重复元素，保留，然后右移left一个单位，再把right的值赋给left
+            left += 1
+            nums[left] = nums[right]
+        return left + 1
+
 
 
 a = Solution().removeDuplicates([1, 2, 3, 3])
 print(a)
-b = Solution().removeDuplicates2([1, 2, 3, 3])
-print(a)
+
