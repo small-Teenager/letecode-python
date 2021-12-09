@@ -6,6 +6,7 @@
 链接：https://leetcode-cn.com/problems/intersection-of-two-arrays-ii
 '''
 
+
 # hash 遍历加入hash key:number value:frequency
 # 遍历hash表 value>0 的值即为交集
 
@@ -31,3 +32,9 @@ class Solution(object):
         for k, v in hashmap.items():
             ret.extend([k] * min(v))
         return ret
+
+
+nums1 = [1, 2, 2, 1]
+nums2 = [2, 2]
+
+print(Solution().intersect(nums1, nums2))
